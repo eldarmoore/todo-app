@@ -1,7 +1,7 @@
 <div class="row" style="margin-top: 50px;">
   <form (submit)="addTask(tasksForm)" #tasksForm="ngForm">
     <div class="col-md-11" style="margin-right: -8px">
-      <input type="text" class="form-control panel-danger" placeholder="Text input" name="content" ngModel required [placeholder]="errorMessage">
+      <input type="text" class="form-control" placeholder="Text input" name="content" ngModel required [placeholder]="errorMessage">
     </div>
     <div class="col-md-1" style="padding-left: 0">
       <button type="button" class="btn btn-primary" type="submit">+</button>

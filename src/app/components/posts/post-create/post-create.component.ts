@@ -1,6 +1,7 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component} from '@angular/core';
 import {PostModel} from '../../../models/post.model';
 import {NgForm} from '@angular/forms';
+import {PostsService} from '../../../services/posts.service';
 
 @Component({ // Decorator
   selector: 'app-post-create',
@@ -8,9 +9,11 @@ import {NgForm} from '@angular/forms';
   styleUrls: ['./post-create.component.css']
 })
 export class PostCreateComponent {
-  enteredContent = '';
   errorMessage = '';
-  @Output() postCreated = new EventEmitter<PostModel>();
+  id = 0;
+  complete = false;
+
+  constructor(public postsService: PostsService) {}
 
   // Click Event
   addTask(form: NgForm) {
@@ -21,7 +24,17 @@ export class PostCreateComponent {
       return;
     }
 
-    const post: PostModel = {content: form.value.content};
-    this.postCreated.emit(post);
+    const post: PostModel = {
+      content: form.value.content,
+      id: this.id,
+      complete: false
+    };
+    this.postsService.addPost(
+      this.id,
+      form.value.content,
+      this.complete
+    );
+    this.id++;
+    form.resetForm();
   }
 }

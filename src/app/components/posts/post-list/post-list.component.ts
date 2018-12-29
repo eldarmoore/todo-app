@@ -1,19 +1,45 @@
-import {Component, Input} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {PostModel} from '../../../models/post.model';
+import {PostsService} from '../../../services/posts.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-post-list',
   templateUrl: './post-list.component.html',
   styleUrls: ['./post-list.component.css']
 })
-export class PostListComponent {
+export class PostListComponent implements OnInit {
 
-  // posts = [
-  //   {content: 'This is the first post\'s content'},
-  //   {content: 'This is the first post\'s content'},
-  //   {content: 'This is the first post\'s content'}
-  // ];
+  posts: PostModel[] = [];
+  newPosts: PostModel[] = [];
+  completedPosts: PostModel[] = [];
 
-  @Input() posts: PostModel[] = [];
+  private postsSub: Subscription;
 
+  constructor(public postsService: PostsService) {}
+
+  ngOnInit() {
+    this.posts = this.postsService.getPosts();
+    this.postsSub = this.postsService.getPostUpdateListener().subscribe((posts: PostModel[]) => {
+      this.posts = posts;
+    });
+  }
+
+  ngOnDestroy() {
+    this.postsSub.unsubscribe();
+  }
+
+  // onDelete(id) {
+  //   this.postsService.removePost(id);
+  // }
+
+  // Service is now available as this.todoDataService
+  toggleComplete(post) {
+    this.postsService.toggleComplete(post);
+  }
+
+  onDelete(id: number) {
+    this.posts = this.posts.filter(p => p.id !== id);
+    this.postsService.removePost(id);
+  }
 }
