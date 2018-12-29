@@ -29,11 +29,6 @@ export class PostListComponent implements OnInit {
     this.postsSub.unsubscribe();
   }
 
-  // onDelete(id) {
-  //   this.postsService.removePost(id);
-  // }
-
-  // Service is now available as this.todoDataService
   toggleComplete(post) {
     this.postsService.toggleComplete(post);
   }
