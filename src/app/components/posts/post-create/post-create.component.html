@@ -1,8 +1,10 @@
 <div class="row" style="margin-top: 50px;">
-  <div class="col-md-11" style="margin-right: -8px">
-    <input type="text" class="form-control" placeholder="Text input" [(ngModel)]="enteredContent">
-  </div>
-  <div class="col-md-1" style="padding-left: 0">
-    <button type="button" class="btn btn-primary" (click)="addPost()">+</button>
-  </div>
+  <form (submit)="addTask(tasksForm)" #tasksForm="ngForm">
+    <div class="col-md-11" style="margin-right: -8px">
+      <input type="text" class="form-control panel-danger" placeholder="Text input" name="content" ngModel required [placeholder]="errorMessage">
+    </div>
+    <div class="col-md-1" style="padding-left: 0">
+      <button type="button" class="btn btn-primary" type="submit">+</button>
+    </div>
+  </form>
 </div>
