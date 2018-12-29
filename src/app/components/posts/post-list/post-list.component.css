@@ -30,3 +30,6 @@
   margin-top: 20px;
   border: 1px dashed #e3dede;
 }
+.list-group-item label {
+   font-weight: 300;
+ }
