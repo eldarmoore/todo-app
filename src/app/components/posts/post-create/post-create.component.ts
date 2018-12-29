@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Output} from '@angular/core';
+import {PostModel} from '../../../models/post.model';
 
 @Component({ // Decorator
   selector: 'app-post-create',
@@ -7,11 +8,11 @@ import {Component, EventEmitter, Output} from '@angular/core';
 })
 export class PostCreateComponent {
   enteredContent = '';
-  @Output() postCreated = new EventEmitter();
+  @Output() postCreated = new EventEmitter<PostModel>();
 
   // Click Event
   addPost() {
-    const post = {content: this.enteredContent};
+    const post: PostModel = {content: this.enteredContent};
     this.postCreated.emit(post);
   }
 }
