@@ -31,5 +31,23 @@
   border: 1px dashed #e3dede;
 }
 .list-group-item label {
-   font-weight: 300;
- }
+  font-weight: 300;
+  margin-top: 6px;
+  margin-left: -20px;
+}
+
+.del-task-btn {
+  margin-right: -20px;
+}
+
+.del-task-btn span {
+  font-size: 1.1rem;
+}
+
+input[type=checkbox], input[type=radio] {
+  margin: 10px -10px;
+}
+
+label del {
+  color: #b8b8b8;
+}
