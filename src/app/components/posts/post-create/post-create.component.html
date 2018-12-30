@@ -1,9 +1,9 @@
 <div class="row" style="margin-top: 50px;">
   <form (submit)="addTask(tasksForm)" #tasksForm="ngForm">
-    <div class="col-8 col-md-10 col-sm-8 col-xs-8">
+    <div class="col-10 col-md-10 col-sm-10 col-xs-9">
       <input type="text" class="form-control" placeholder="Text input" name="content" ngModel required [placeholder]="errorMessage">
     </div>
-    <div class="col-4 col-md-2 col-sm-4 col-xs-4">
+    <div class="col-2 col-md-2 col-sm-2 col-xs-3">
       <button type="button" class="btn btn-primary col-12 post-btn" type="submit">+</button>
     </div>
   </form>
