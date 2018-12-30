@@ -20,7 +20,7 @@ export class PostCreateComponent {
 
     // Validation if no content entered
     if (form.invalid) {
-      this.errorMessage = 'You can\'t post empty value!';
+      this.errorMessage = 'Enter your new task';
       return;
     }
 
