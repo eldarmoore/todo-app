@@ -3,7 +3,7 @@
     <li class="list-group-item" *ngFor="let post of posts">
       <div class="row" *ngIf="post.complete === false">
         <div class="col-1 col-md-1 col-sm-1 col-xs-1">
-          <input id="new-checkbox-{{post.id}}" class="toggle" type="checkbox" (click)="toggleComplete(post)" [checked]="post.complete">
+          <input id="new-checkbox-{{post.id}}" class="toggle" type="checkbox" (click)="toggleComplete(post)" [checked]="post.complete" pattern="[a-z0-9!#$%&'*+\/=?^_\`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$">
         </div>
         <div class="col-8 col-md-9 col-sm-8 col-xs-6">
           <label for="new-checkbox-{{post.id}}">{{ post.content }}</label>
@@ -25,7 +25,7 @@
           <input id="completed-checkbox-{{post.id}}" class="toggle" type="checkbox" (click)="toggleComplete(post)" [checked]="post.complete">
         </div>
         <div class="col-8 col-md-9 col-sm-8 col-xs-6">
-          <label for="completed-checkbox-{{post.id}}">{{ post.content }}</label>
+          <label for="completed-checkbox-{{post.id}}"><del>{{ post.content }}</del></label>
         </div>
         <div class="col-3 col-md-2 col-sm-3 col-xs-4">
           <button class="btn btn-danger pull-right del-task-btn" (click)="onDelete(post.id)"><span class="glyphicon glyphicon-trash"></span></button>
