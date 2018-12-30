@@ -11,8 +11,6 @@ import {Subscription} from 'rxjs';
 export class PostListComponent implements OnInit {
 
   posts: PostModel[] = [];
-  newPosts: PostModel[] = [];
-  completedPosts: PostModel[] = [];
 
   private postsSub: Subscription;
 
